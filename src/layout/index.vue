@@ -11,7 +11,7 @@
   </div>
 </template>
 
-<script>
+<script lang="ts" setup>
 import { Navbar, Sidebar, AppMain } from './components'
 import ResizeMixin from './mixin/ResizeHandler'
 

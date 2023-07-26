@@ -20,24 +20,24 @@
 
 <script lang="ts" setup>
 import Logo from './Logo.vue'
-import SidebarItem from './SidebarItem'
+import SidebarItem from './SidebarItem.vue'
 import variables from '@/styles/variables.scss'
 import { computed } from 'vue'
 import { useStore } from 'pinia'
-import variables from '@/styles/variables.scss'
+import { useRouter } from 'vue-router';
 
 const mapStore = useStore();
-const routes = computed(() => this.$router.options.routes);
+const router = useRouter();
+const routes = router.getRoutes();
+
 const activeMenu = computed(() => {
-  const route = this.$route
-      const { meta, path } = route
+      const { meta, path } = routes
       if (meta.activeMenu) {
         return meta.activeMenu
       }
       return path
 });
-const showLogo = computed(() => this.$store.state.settings.sidebarLogo);
-const variables = computed(() => variables);
+const showLogo = computed(() => mapStore.state.settings.sidebarLogo);
 const isCollapse = computed(() => !mapStore.sidebar.opened);
 
 </script>

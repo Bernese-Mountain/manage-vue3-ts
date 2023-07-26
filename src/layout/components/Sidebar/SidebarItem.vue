@@ -13,10 +13,10 @@
         <props.item v-if="props.item.meta" :icon="props.item.meta && props.item.meta.icon" :title="props.item.meta.title" />
       </template>
       <sidebar-item
-        v-for="child in props.item.children"
+        v-for="child in item.children"
         :key="child.path"
         :is-nest="true"
-        :props="child"
+        :item="child"
         :base-path="resolvePath(child.path)"
         class="nest-menu"
       />
@@ -30,6 +30,7 @@ import { isExternal } from '@/utils/validate'
 import Item from './Item.vue'
 import AppLink from './Link.vue'
 import { computed, ref, onMounted } from 'vue'
+import { useAppStore } from '@/store/modules/app'
 
 const props = defineProps({
       item: {
@@ -97,11 +98,11 @@ const resolvePath = (routePath: string) => {
       }
       return path.resolve(props.basePath, routePath)
     }
-    const 
+    const store = useAppStore();
     const device = computed(() => store.state.app.device);
     const subMenu = ref();
     const fixBugIniOS = () => {
-      const $subMenu: any;
+      const $subMenu: any = null;
       $subMenu.value = subMenu
       if ($subMenu) {
         const handleMouseleave = $subMenu.handleMouseleave

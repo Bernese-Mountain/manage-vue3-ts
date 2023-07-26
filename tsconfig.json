@@ -1,6 +1,9 @@
 {
   "compilerOptions": {
-    "types": ["element-plus/global"],
+    "types": [
+      "element-plus/global",
+      "node"
+    ],
     "target": "ESNext",
     "useDefineForClassFields": true,
     "module": "ESNext",
