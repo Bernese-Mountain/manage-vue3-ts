@@ -1,11 +1,9 @@
 <template>
-    <el-button type="primary">Primary</el-button>
-</template>
-
-<script setup lang="ts">
-
-</script>
-
-<style scoped>
-
-</style>
+    <div id="app">
+      <router-view />
+    </div>
+  </template>
+  
+  <script lang="ts" setup>
+  </script>
+  

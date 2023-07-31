@@ -6,15 +6,14 @@
   </section>
 </template>
 
-<script>
-export default {
-  name: 'AppMain',
-  computed: {
-    key() {
-      return this.$route.path
-    }
-  }
-}
+<script lang="ts" setup>
+import { computed } from 'vue'
+import router from '@/router';
+
+const key = '1'
+// const key = computed(() => {
+//     return router.path
+// });
 </script>
 
 <style scoped>

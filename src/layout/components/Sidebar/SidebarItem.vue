@@ -99,7 +99,7 @@ const resolvePath = (routePath: string) => {
       return path.resolve(props.basePath, routePath)
     }
     const store = useAppStore();
-    const device = computed(() => store.state.app.device);
+    const device = computed(() => store.$state.device);
     const subMenu = ref();
     const fixBugIniOS = () => {
       const $subMenu: any = null;

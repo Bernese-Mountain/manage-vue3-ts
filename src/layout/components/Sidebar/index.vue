@@ -3,12 +3,8 @@
     <logo v-if="showLogo" :collapse="isCollapse" />
     <el-scrollbar wrap-class="scrollbar-wrapper">
       <el-menu
-        :default-active="activeMenu"
         :collapse="isCollapse"
-        :background-color="variables.menuBg"
-        :text-color="variables.menuText"
         :unique-opened="false"
-        :active-text-color="variables.menuActiveText"
         :collapse-transition="false"
         mode="vertical"
       >
@@ -21,23 +17,25 @@
 <script lang="ts" setup>
 import Logo from './Logo.vue'
 import SidebarItem from './SidebarItem.vue'
-import variables from '@/styles/variables.scss'
-import { computed } from 'vue'
-import { useStore } from 'pinia'
-import { useRouter } from 'vue-router';
-
-const mapStore = useStore();
-const router = useRouter();
+// import * as variables from '@/styles/variables.scss';
+import { computed, ref } from 'vue'
+// import { useStore } from 'pinia'
+import { useAppStore } from '@/store/modules/app'
+import { useRouter, useRoute } from 'vue-router'
+import router from '@/router/index'
+const mapStore = useAppStore();
+// const router = useRouter();
 const routes = router.getRoutes();
-
-const activeMenu = computed(() => {
-      const { meta, path } = routes
-      if (meta.activeMenu) {
-        return meta.activeMenu
-      }
-      return path
-});
-const showLogo = computed(() => mapStore.state.settings.sidebarLogo);
+const route = useRoute()
+// const activeMenu = computed(() => {
+//       const { meta, path } = route
+//       if (meta.activeMenu) {
+//         return meta.activeMenu
+//       }
+//       return path
+// });
+// const showLogo = computed(() => mapStore.$state.sidebarLogo);
+const showLogo = false;
 const isCollapse = computed(() => !mapStore.sidebar.opened);
 
 </script>
