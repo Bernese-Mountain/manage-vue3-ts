@@ -2,8 +2,10 @@ import { createApp } from 'vue'
 import ElementPlus from 'element-plus'
 import 'element-plus/dist/index.css'
 import App from './App.vue'
-import { createPinia } from 'pinia'
 import { setupStore } from '@/store'
+import { setupRouter } from '@/router'
+import { setPermission } from '@/permission'
+
 
 async function appInit() {
     const app = createApp(App)
@@ -19,9 +21,6 @@ async function appInit() {
     // 挂载路由
     setupRouter(app)
   
-    // 路由准备就绪后挂载APP实例
-    await router.isReady()
-  
     // // 语言注册
     // app.use(i18n)
   
@@ -33,5 +32,6 @@ async function appInit() {
   }
   
   appInit().then(() => {
-    //
+    //挂载权限管理
+    // setPermission();
   })

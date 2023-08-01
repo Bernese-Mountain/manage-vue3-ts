@@ -31,16 +31,10 @@
   </div>
 </template>
 
-<script>
-import { mapGetters } from 'vuex'
+<script lang="ts" setup>
 import Breadcrumb from '@/components/Breadcrumb'
 import Hamburger from '@/components/Hamburger'
 
-export default {
-  components: {
-    Breadcrumb,
-    Hamburger
-  },
   computed: {
     ...mapGetters([
       'sidebar',
@@ -56,7 +50,6 @@ export default {
       this.$router.push(`/login?redirect=${this.$route.fullPath}`)
     }
   }
-}
 </script>
 
 <style lang="scss" scoped>

@@ -1,4 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router'
+import type { App } from 'vue'
 
 /* Layout */
 import Layout from '@/layout/index.vue'
@@ -46,5 +47,8 @@ export function resetRouter() {
   })
 //   router.matcher = newRouter.matcher // reset router
 }
-
+export function setupRouter(app: App) {
+  app.use(router);
+  console.log("2.routerHasBeenSetted");
+}
 export default router

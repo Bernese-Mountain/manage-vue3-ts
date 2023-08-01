@@ -12,33 +12,35 @@ interface appStore {
 // 编辑区域内容
 export const useAppStore = defineStore({
   id: 'useAppStore',
-  state: () => ({
-    sidebar: {
-      opened: true,
-      withoutAnimation: false
-    },
-    device: 'desktop'
-  }),
+  state(): any {
+    return {
+      sidebar: {
+        opened: true,
+        withoutAnimation: false
+      },
+      device: 'desktop'
+    }
+  },
   getters: {
     //
   },
   actions: {
-    toggleSideBar(state:appStore) {
-      state.sidebar.opened = !state.sidebar.opened
-      state.sidebar.withoutAnimation = false
-      if (state.sidebar.opened) {
+    toggleSideBar() {
+      this.state.sidebar.opened = !this.state.sidebar.opened
+      this.state.sidebar.withoutAnimation = false
+      if (this.state.sidebar.opened) {
         Cookies.set('sidebarStatus', '1');
       } else {
         Cookies.set('sidebarStatus', '0')
       }
     },
-    closeSideBar(state:appStore, withoutAnimation: Boolean) {
+    closeSideBar(withoutAnimation: Boolean) {
       Cookies.set('sidebarStatus', '0')
-      state.sidebar.opened = false
-      state.sidebar.withoutAnimation = withoutAnimation
+      this.state.sidebar.opened = false
+      this.state.sidebar.withoutAnimation = withoutAnimation
     },
-    toggleDevice(state:appStore, device: string) {
-      state.device = device
+    toggleDevice(device: string) {
+      this.state.device = device
     }
   }
 })

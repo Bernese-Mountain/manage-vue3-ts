@@ -1,7 +1,7 @@
 import  { ElMessageBox, ElMessage } from 'element-plus'
 import { useUserStore } from '@/store/modules/user'
 import { getToken } from '@/utils/auth'
-import axios, { AxiosResponse, AxiosRequestConfig } from 'axios'
+import axios, { AxiosResponse, AxiosRequestConfig, InternalAxiosRequestConfig } from 'axios'
 
 const store = useUserStore();
 const service = axios.create({
@@ -10,7 +10,7 @@ const service = axios.create({
 })
 
 service.interceptors.request.use(
-  (config: AxiosRequestConfig) => {
+  (config: InternalAxiosRequestConfig) => {
     if (store.hasToken) {
       config.headers['X-Token'] = getToken()
     }
@@ -56,7 +56,7 @@ service.interceptors.response.use(
   (err: AxiosResponse) => {
     console.log('err' + err) // for debug
     ElMessage({
-      message: err.message,
+      // message: err.message,
       type: 'error',
       duration: 5 * 1000
     })
