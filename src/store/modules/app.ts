@@ -1,31 +1,22 @@
 import { defineStore } from 'pinia'
 import Cookies from 'js-cookie'
 
-
-interface appStore {
-  sidebar: {
-    opened: Boolean,
-    withoutAnimation: Boolean
-  }
-  device: string
-};
 // 编辑区域内容
 export const useAppStore = defineStore({
   id: 'useAppStore',
-  state(): any {
-    return {
-      sidebar: {
-        opened: true,
-        withoutAnimation: false
-      },
-      device: 'desktop'
-    }
-  },
+  state: (): any => ({
+    sidebar: {
+      opened: true,
+      withoutAnimation: false
+    },
+    device: 'desktop'
+  }),
   getters: {
     //
   },
   actions: {
     toggleSideBar() {
+      console.log("this.state",this.state);
       this.state.sidebar.opened = !this.state.sidebar.opened
       this.state.sidebar.withoutAnimation = false
       if (this.state.sidebar.opened) {

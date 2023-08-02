@@ -47,8 +47,10 @@ export function resetRouter() {
   })
 //   router.matcher = newRouter.matcher // reset router
 }
+
+export default router
+
 export function setupRouter(app: App) {
   app.use(router);
   console.log("2.routerHasBeenSetted");
 }
-export default router

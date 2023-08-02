@@ -1,13 +1,13 @@
 <template>
   <div class="navbar">
-    <hamburger :is-active="sidebar.opened" class="hamburger-container" @toggleClick="toggleSideBar" />
+    <hamburger :is-active="appStore.opened" class="hamburger-container" @toggleClick="toggleSideBar" />
 
     <breadcrumb class="breadcrumb-container" />
 
     <div class="right-menu">
       <el-dropdown class="avatar-container" trigger="click">
         <div class="avatar-wrapper">
-          <img :src="avatar+'?imageView2/1/w/80/h/80'" class="user-avatar">
+          <img :src="userStore+'?imageView2/1/w/80/h/80'" class="user-avatar">
           <i class="el-icon-caret-bottom" />
         </div>
         <el-dropdown-menu slot="dropdown" class="user-dropdown">
@@ -32,23 +32,23 @@
 </template>
 
 <script lang="ts" setup>
-import Breadcrumb from '@/components/Breadcrumb'
-import Hamburger from '@/components/Hamburger'
+import Breadcrumb from '@/components/Breadcrumb/index.vue'
+import Hamburger from '@/components/Hamburger/index.vue'
+import { useAppStore } from '@/store/modules/app'
+import { useUserStore } from '@/store/modules/user'
+import { useRoute, useRouter } from 'vue-router'
 
-  computed: {
-    ...mapGetters([
-      'sidebar',
-      'avatar'
-    ])
-  },
-  methods: {
-    toggleSideBar() {
-      this.$store.dispatch('app/toggleSideBar')
-    },
-    async logout() {
-      await this.$store.dispatch('user/logout')
-      this.$router.push(`/login?redirect=${this.$route.fullPath}`)
-    }
+const appStore = useAppStore()
+const userStore = useUserStore()
+const router = useRouter()
+const route = useRoute();
+
+  function toggleSideBar() {
+    appStore.toggleSideBar()
+  }
+  const logout = () => {
+    userStore.logout()
+    router.push(`/login?redirect=${route.fullPath}`)
   }
 </script>
 

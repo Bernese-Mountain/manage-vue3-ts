@@ -1,11 +1,6 @@
 import request from '@/utils/request'
 
 export function login(data: any) {
-  console.log('api/user.js login(data) data: ', request({
-    url: '/vue-admin-template/user/login',
-    method: 'post',
-    data
-  }))
   return request({
     url: '/vue-admin-template/user/login',
     method: 'post',
