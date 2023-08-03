@@ -19,12 +19,10 @@ import Logo from './Logo.vue'
 import SidebarItem from './SidebarItem.vue'
 // import * as variables from '@/styles/variables.scss';
 import { computed, ref } from 'vue'
-// import { useStore } from 'pinia'
 import { useAppStore } from '@/store/modules/app'
-import { useRouter, useRoute } from 'vue-router'
+import { useRoute } from 'vue-router'
 import router from '@/router/index'
-const mapStore = useAppStore();
-// const router = useRouter();
+const store = useAppStore();
 const routes = router.getRoutes();
 const route = useRoute()
 // const activeMenu = computed(() => {
@@ -34,8 +32,8 @@ const route = useRoute()
 //       }
 //       return path
 // });
-// const showLogo = computed(() => mapStore.$state.sidebarLogo);
+// const showLogo = computed(() => store.$state.sidebarLogo);
 const showLogo = false;
-const isCollapse = computed(() => !mapStore.sidebar.opened);
+const isCollapse = !store.sidebar.opened;
 
 </script>
