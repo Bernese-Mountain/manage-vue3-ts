@@ -13,7 +13,8 @@
 </template>
 
 <script lang="ts" setup>
-import { Navbar, Sidebar, AppMain } from './components'
+import { Navbar, AppMain } from './components'
+import Sidebar from './components/Sidebar/index.vue'
 import { useAppStore } from '@/store/modules/app'
 import { useRouter, useRoute } from 'vue-router'
 import router from '@/router/index'

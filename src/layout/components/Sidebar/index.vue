@@ -32,8 +32,6 @@ const route = useRoute()
 //       }
 //       return path
 // });
-// const showLogo = computed(() => store.$state.sidebarLogo);
 const showLogo = false;
-const isCollapse = !store.sidebar.opened;
-
+const isCollapse = computed(() => !store.sidebar.opened);
 </script>

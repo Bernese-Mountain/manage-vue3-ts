@@ -25,12 +25,13 @@
 </template>
 
 <script lang="ts" setup>
-import path from 'path'
 import { isExternal } from '@/utils/validate'
 import Item from './Item.vue'
 import AppLink from './Link.vue'
 import { computed, ref, onMounted } from 'vue'
 import { useAppStore } from '@/store/modules/app'
+import path from 'path-browserify'
+
 
 const props = defineProps({
       item: {
@@ -98,24 +99,27 @@ const resolvePath = (routePath: string) => {
       }
       return path.resolve(props.basePath, routePath)
     }
-    const store = useAppStore();
-    const device = computed(() => store.$state.device);
-    const subMenu = ref();
-    const fixBugIniOS = () => {
-      const $subMenu: any = null;
-      $subMenu.value = subMenu
-      if ($subMenu) {
-        const handleMouseleave = $subMenu.handleMouseleave
-        $subMenu.handleMouseleave = (e: Event) => {
-          if (device.value === 'mobile') {
-            return
-          }
-          handleMouseleave(e)
-        }
-      }
-    }
 
-    onMounted(() => {
-      fixBugIniOS()
-    })
+    //修复iOS点击不收起的bug，暂时不用
+
+    // const store = useAppStore();
+    // const device = computed(() => store.$state.device);
+    // const subMenu = ref(null);
+    // const fixBugIniOS = () => {
+    //   const $subMenu: any = null;
+    //   $subMenu.value = subMenu
+    //   if ($subMenu) {
+    //     const handleMouseleave = $subMenu.handleMouseleave
+    //     $subMenu.handleMouseleave = (e: Event) => {
+    //       if (device.value === 'mobile') {
+    //         return
+    //       }
+    //       handleMouseleave(e)
+    //     }
+    //   }
+    // }
+
+    // onMounted(() => {
+    //   fixBugIniOS()
+    // })
 </script>
