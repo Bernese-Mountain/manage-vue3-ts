@@ -6,6 +6,8 @@ import { setupStore } from '@/store'
 import { setupRouter } from '@/router'
 // import { setPermission } from '@/permission'
 
+// 引入全局样式
+import '@/styles/index.scss'
 
 async function appInit() {
     const app = createApp(App)
