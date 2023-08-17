@@ -80,7 +80,6 @@ import { watch, onBeforeMount, onBeforeUnmount, onMounted } from 'vue'
 </script>
 <style lang="scss" scoped>
   @import "../styles/mixin.scss";
-  @import "../styles/variables.scss";
 
   .app-wrapper {
     @include clearfix;
@@ -107,7 +106,7 @@ import { watch, onBeforeMount, onBeforeUnmount, onMounted } from 'vue'
     top: 0;
     right: 0;
     z-index: 9;
-    width: calc(100% - #{$sideBarWidth});
+    width: calc(100% - #{210px});
     transition: width 0.28s;
   }
 

@@ -3,14 +3,14 @@
     <template v-if="hasOneShowingChild(props.item.children,props.item) && (!onlyOneChild.children||onlyOneChild.noShowingChildren)&&!props.item.alwaysShow">
       <app-link v-if="onlyOneChild.meta" :to="resolvePath(onlyOneChild.path)">
         <el-menu-item :index="resolvePath(onlyOneChild.path)" :class="{'submenu-title-noDropdown':!isNest}">
-          <props.item :icon="onlyOneChild.meta.icon||(props.item.meta&&props.item.meta.icon)" :title="onlyOneChild.meta.title" />
+          <item :icon="onlyOneChild.meta.icon||(props.item.meta&&props.item.meta.icon)" :title="onlyOneChild.meta.name" />
         </el-menu-item>
       </app-link>
     </template>
 
-    <el-sub-menu v-else ref="subMenu" :index="resolvePath(props.item.path)" popper-append-to-body>
+    <el-sub-menu v-else ref="subMenu" :index="resolvePath(props.item.path)" teleported>
       <template slot="title">
-        <props.item v-if="props.item.meta" :icon="props.item.meta && props.item.meta.icon" :title="props.item.meta.title" />
+        <item v-if="props.item.meta" :icon="props.item.meta && props.item.meta.icon" :title="props.item.meta.name" />
       </template>
       <sidebar-item
         v-for="child in item.children"
@@ -52,7 +52,7 @@ const props = defineProps({
       hidden: boolean
       component: Object;
       meta: {
-        title: string;
+        name: string;
       };
       name: string;
       path: string;
@@ -61,7 +61,7 @@ const props = defineProps({
       children: [],
       meta: {
         icon: '',
-        title: ''
+        name: ''
       },
       path: '',
       noShowingChildren: false,
