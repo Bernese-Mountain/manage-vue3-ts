@@ -11,11 +11,12 @@
 const props = defineProps({
   icon: {
     type: String,
-    default: ''
+    default: '',
   },
   title: {
     type: String,
-    default: ''
+    default: '',
+    required: true
   }
 });
 console.log('props.title', props.title);

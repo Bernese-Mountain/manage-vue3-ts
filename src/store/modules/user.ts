@@ -31,7 +31,8 @@ export const useUserStore = defineStore({
           setToken(data.token)
           resolve()
         }).catch((error: any) => {
-          reject(error)
+          // reject(error)  //无mock暂时前端写死
+          resolve()
         })
       })
     },

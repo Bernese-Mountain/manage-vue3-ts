@@ -4,7 +4,7 @@ import 'element-plus/dist/index.css'
 import App from './App.vue'
 import { setupStore } from '@/store'
 import { setupRouter } from '@/router'
-// import { setPermission } from '@/permission'
+import { setPermission } from '@/permission'
 
 // 引入全局样式
 import '@/styles/index.scss'
@@ -34,6 +34,6 @@ async function appInit() {
   }
   
   appInit().then(() => {
-    //挂载权限管理
-    // setPermission();
+    // 挂载权限管理
+    setPermission();
   })

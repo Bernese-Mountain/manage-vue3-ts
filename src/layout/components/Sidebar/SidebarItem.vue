@@ -10,7 +10,7 @@
 
     <el-sub-menu v-else ref="subMenu" :index="resolvePath(props.item.path)" teleported>
       <template slot="title">
-        <item v-if="props.item.meta" :icon="props.item.meta && props.item.meta.icon" :title="props.item.meta.name" />
+        <item v-if="props.item.name" :icon="props.item.meta && props.item.meta.icon" :title="props.item.name" />
       </template>
       <sidebar-item
         v-for="child in item.children"
@@ -28,8 +28,7 @@
 import { isExternal } from '@/utils/validate'
 import Item from './Item.vue'
 import AppLink from './Link.vue'
-import { computed, ref, onMounted } from 'vue'
-import { useAppStore } from '@/store/modules/app'
+import { ref } from 'vue'
 import path from 'path-browserify'
 
 
@@ -47,7 +46,7 @@ const props = defineProps({
         default: ''
       }
     });
-
+console.log(props.item.name);
     interface Item {
       hidden: boolean
       component: Object;

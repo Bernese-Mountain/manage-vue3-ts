@@ -30,6 +30,18 @@ export const setConstantRoutes = () => {
         meta: { title: 'Dashboard', icon: 'dashboard' }
       }]
     },
+    {
+      path: '/form',
+      component: Layout,
+      children: [
+        {
+          path: 'index',
+          name: 'Form',
+          component: () => import('@/views/form/index.vue'),
+          meta: { title: 'Form', icon: 'form' }
+        }
+      ]
+    },
   
     // 404 page must be placed at the end !!!
     { path: '/:pathMatch(.*)*', redirect: '/404', hidden: true }
