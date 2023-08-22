@@ -1,4 +1,3 @@
-import router from './router'
 import { useUserStore } from './store/modules/user'
 import  Message from 'element-plus'
 import NProgress from 'nprogress' // progress bar

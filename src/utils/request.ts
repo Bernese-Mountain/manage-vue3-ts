@@ -5,7 +5,7 @@ import axios, { AxiosResponse, AxiosRequestConfig, InternalAxiosRequestConfig } 
 import { deflate } from 'zlib';
 
   const service = axios.create({
-    baseURL: import.meta.env.VUE_APP_BASE_API, // url = base url + request url
+    baseURL: import.meta.env.VITE_NODE_ENV, // url = base url + request url
     timeout: 5000 // request timeout
   })
   

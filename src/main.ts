@@ -36,4 +36,7 @@ async function appInit() {
   appInit().then(() => {
     // 挂载权限管理
     setPermission();
+    // 生产环境下挂载 mock
+    const { mockXHR } = require('../mock')
+    mockXHR()
   })
